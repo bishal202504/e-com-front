@@ -1,0 +1,212 @@
+<!-- app.component.html -->
+<div class="ecommerce-landing">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ShopEasy</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          <a class="btn btn-outline-light me-2" href="#">
+            <i class="bi bi-search"></i>
+          </a>
+          <a class="btn btn-outline-light me-2" href="#">
+            <i class="bi bi-person"></i>
+          </a>
+          <a class="btn btn-outline-light position-relative" href="#">
+            <i class="bi bi-cart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              3
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section bg-light py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="display-4 fw-bold mb-4">Summer Collection 2023</h1>
+          <p class="lead mb-4">Discover our new arrivals with up to 30% discount on selected items.</p>
+          <button class="btn btn-primary btn-lg me-2">Shop Now</button>
+          <button class="btn btn-outline-secondary btn-lg">Learn More</button>
+        </div>
+        <div class="col-md-6">
+          <img src="https://via.placeholder.com/600x400" alt="Hero Image" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Featured Products</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let product of featuredProducts">
+          <div class="card h-100">
+            <img [src]="product.image" class="card-img-top" [alt]="product.name">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-danger fw-bold">{{ product.price | currency }}</span>
+                <button class="btn btn-sm btn-outline-primary">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-primary">View All Products</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Shop by Category</h2>
+      <div class="row">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let category of categories">
+          <div class="card category-card">
+            <img [src]="category.image" class="card-img" [alt]="category.name">
+            <div class="card-img-overlay d-flex align-items-center justify-content-center">
+              <h5 class="card-title text-white bg-dark p-2 rounded">{{ category.name }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Banner -->
+  <section class="promo-banner py-5 bg-primary text-white">
+    <div class="container text-center">
+      <h2 class="display-5 fw-bold mb-3">Limited Time Offer!</h2>
+      <p class="lead mb-4">Get 30% off on all electronics this week only. Use code: ELECTRO30</p>
+      <button class="btn btn-light btn-lg">Shop Now</button>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">What Our Customers Say</h2>
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let testimonial of testimonials">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <img [src]="testimonial.avatar" class="rounded-circle mb-3" width="80" [alt]="testimonial.name">
+              <p class="card-text mb-3">"{{ testimonial.comment }}"</p>
+              <div class="text-warning mb-2">
+                <i class="bi bi-star-fill" *ngFor="let star of [1,2,3,4,5]"></i>
+              </div>
+              <h5 class="card-title mb-1">{{ testimonial.name }}</h5>
+              <small class="text-muted">{{ testimonial.position }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2 class="mb-3">Subscribe to Our Newsletter</h2>
+          <p class="mb-4">Get the latest updates on new products and upcoming sales</p>
+          <form class="row g-2 justify-content-center">
+            <div class="col-md-8">
+              <input type="email" class="form-control form-control-lg" placeholder="Your email address">
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-primary btn-lg w-100">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <h5>ShopEasy</h5>
+          <p>Your one-stop shop for all your needs. Quality products at affordable prices.</p>
+          <div class="social-icons">
+            <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="me-2"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none">Home</a></li>
+            <li><a href="#" class="text-decoration-none">Products</a></li>
+            <li><a href="#" class="text-decoration-none">About Us</a></li>
+            <li><a href="#" class="text-decoration-none">Contact</a></li>
+            <li><a href="#" class="text-decoration-none">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Customer Service</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none">My Account</a></li>
+            <li><a href="#" class="text-decoration-none">Order Tracking</a></li>
+            <li><a href="#" class="text-decoration-none">Wishlist</a></li>
+            <li><a href="#" class="text-decoration-none">Shipping Policy</a></li>
+            <li><a href="#" class="text-decoration-none">Returns & Refunds</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4">
+          <h5>Contact Us</h5>
+          <address>
+            123 Shopping Street<br>
+            Retail City, RC 12345<br>
+            <i class="bi bi-telephone">(123) 456-7890</i> <br>
+            <i class="bi bi-envelope">infoshopeasy.com</i> 
+          </address>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; 2023 ShopEasy. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+          <a href="#" class="text-decoration-none">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
